@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Jira to Markdown",
+  "version": "0.1.0",
+  "description": "Copy Jira ticket description to clipboard as Markdown",
+  "permissions": ["activeTab", "clipboardWrite"],
+  "host_permissions": ["*://*.atlassian.net/*"],
+  "action": {},
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.atlassian.net/browse/*"],
+      "js": ["turndown.js", "content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
